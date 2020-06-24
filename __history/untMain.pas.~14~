@@ -1,0 +1,53 @@
+unit untMain;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  TForm3 = class(TForm)
+    Button1: TButton;
+    Button2: TButton;
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure ExibirValor(AData: TDateTime); overload;
+    procedure ExibirValor(AValor: Extended); overload;
+  end;
+
+var
+  Form3: TForm3;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm3.Button1Click(Sender: TObject);
+begin
+  ExibirValor(Now);
+end;
+
+procedure TForm3.Button2Click(Sender: TObject);
+var
+  nValor: Double;
+begin
+  nValor := 1000;
+  ExibirValor(1000);
+end;
+
+procedure TForm3.ExibirValor(AValor: Extended);
+begin
+  ShowMessage('Valor Extended: ' + FloatToStr(AValor));
+end;
+
+procedure TForm3.ExibirValor(AData: TDateTime);
+begin
+  ShowMessage('Valor TDateTime: ' + FloatToStr(AData));
+end;
+
+end.
